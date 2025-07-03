@@ -105,7 +105,7 @@ BrainTumorClassification/
 ├── utils/                      # Helper functions (preprocessing, loading, etc.)
 ├── dataset/                    # Image data (if any sample added)
 ├── models/
-│   ├── BTD_model.pth           # (Download from Drive)
+│   ├── BTD_model.pth           # (Download from Drive and place the file here)
 │   ├── glioma_stages.pth           # Saved Model for Glioma Stages Detection
 │   ├── BrainTumorClassification.ipynb   # Notebook for CNN testing
 │   └── Glioma_Stages.ipynb               # Notebook for ANN training/testing
