@@ -220,6 +220,6 @@ Feel free to reach out for:
 ## 📜 License
 
 This project is for academic and research purposes only.
-Feel free to fork, reference, and learn — but give credit where due 🙏
+Feel free to fork, reference, and learn - but give credit where due 🙏
 
 ---
