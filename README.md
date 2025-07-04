@@ -73,13 +73,6 @@ This repository includes **pre-trained models** for direct inference:
 ⚠️ The models are for **inference only**.
 📩 **For training code**, please DM or email the author (contact below).
 
-### 📂 Jupyter Notebooks for Testing
-
-| Notebook File                           | Description                              |
-| --------------------------------------- | ---------------------------------------- |
-| `models/BrainTumorClassification.ipynb` | For testing CNN-based tumor detection    |
-| `models/Glioma_Stages.ipynb`            | For training or testing Glioma stage ANN |
-
 ---
 
 ## 🫠 Tech Stack
