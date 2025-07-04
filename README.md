@@ -41,6 +41,7 @@ We used a publicly available dataset of brain MRI images from Kaggle:
 
 ---
 
+
 ## 🧠 Model Architecture
 
 ### 🔵 CNN – Tumor Type Classification
@@ -66,7 +67,7 @@ This repository includes **pre-trained models** for direct inference:
 | Model | Purpose                     | File Name                         |
 | ----- | --------------------------- | --------------------------------- |
 | CNN   | Brain Tumor Classification  | `models/BTD_model.pth`            |
-| ANN   | Glioma Stage Classification | `models/ann_model.pth` (optional) |
+| ANN   | Glioma Stage Classification | `models/glioma_stages.pth`        |
 
 📆 Both models were **trained from scratch** using PyTorch.
 
@@ -198,7 +199,6 @@ python main.py
 
 👤 **Usama Shaikh**
 📧 Email: [shaikhusama541@gmail.com](mailto:shaikhusama541@gmail.com)
-📱 WhatsApp: +92 334 2366009
 🔗 GitHub: [@fewgets](https://github.com/fewgets)
 
 Feel free to reach out for:
