@@ -94,10 +94,9 @@ This repository includes **pre-trained models** for direct inference:
 ```bash
 BrainTumorClassification/
 ├── main.py                     # Entry point: run this
-├── ann_model.py                # ANN logic for glioma stage
-├── cnn_model.py                # CNN architecture for image classification
-├── utils/                      # Helper functions (preprocessing, loading, etc.)
-├── dataset/                    # Image data (if any sample added)
+├── utils.py                    # Helper functions (preprocessing, loading, etc.)
+├── API.py                      # API Endpoint for frontend using FASt API
+├── images/                     # Image data (if any sample needed)
 ├── models/
 │   ├── BTD_model.pth           # (Download from Drive and place the file here)
 │   ├── glioma_stages.pth           # Saved Model for Glioma Stages Detection
