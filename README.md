@@ -1,120 +1,87 @@
-# 🧠 Brain Tumor Classification & Glioma Stage Detection
+# 🧠 NeuroAssist-AI
 
-> A deep learning-based system for brain tumor detection from medical scans and Glioma stage prediction using gene mutation input.
-
----
-
-## 📌 Project Summary
-
-This project implements a two-stage smart classification pipeline:
-
-1. **Brain Tumor Classification** using a **custom CNN**:
-
-   * 📅 Input: MRI/CT grayscale brain image
-   * 🔂 Output: `No Tumor`, `Meningioma`, `Pituitary`, or `Glioma`
-
-2. **Glioma Stage Classification** using a **custom ANN** (if Glioma is detected):
-
-   * 📅 Input: Gene mutation test results (numerical values)
-   * 🔂 Output: Predicted Glioma stage (e.g., Stage I–IV)
+> A Deep Learning-based Smart System for Brain Tumor Detection and Glioma Stage Prediction
+> 
+> 🔗 **[Live Demo](https://neuroassistai.vercel.app/)**
 
 ---
 
-## 📚 Paper Reference
+## 📌 Overview
 
-📄 This project is inspired by a published research paper:
+**NeuroAssist-AI** is a two-stage deep learning pipeline that automates:
 
-🔗 [Click here to read the original paper](https://onlinelibrary.wiley.com/doi/full/10.1155/2022/1830010)
+1. **Brain Tumor Detection** from grayscale MRI/CT images using a custom CNN.
+2. **Glioma Stage Prediction** using numerical gene mutation data via a custom ANN.
 
-> Note: The original research did **not include dataset or code**. We implemented the full system from scratch, including dataset sourcing and model building.
-
----
-
-## 📂 Dataset Used
-
-We used a publicly available dataset of brain MRI images from Kaggle:
-
-🔗 [Brain Tumor MRI Dataset (Kaggle)](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
-
-* Total 4 classes: `Glioma`, `Meningioma`, `Pituitary`, `No Tumor`
-* Images are grayscale `.jpg` format and categorized into folders
+> This system is inspired by real clinical practices and aims to provide intelligent support to radiologists and neurologists.
 
 ---
 
+## 🧪 Live Testing
+
+You can **test the full system online**:
+
+🌐 **[🔗 Live Web App – NeuroAssist-AI](https://neuroassistai.vercel.app/)**
+
+---
+
+## 📚 Research Basis
+
+📄 Inspired by:
+**“Brain Tumor Classification and Glioma Stage Prediction Using Deep Learning”**
+
+🔗 [Read the original paper](https://onlinelibrary.wiley.com/doi/full/10.1155/2022/1830010)
+
+> Note: Original paper had no public dataset or code - we implemented it from scratch.
+
+---
+
+## 📂 Dataset
+
+Dataset: [Brain Tumor MRI Dataset – Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+
+* **4 Classes:** Glioma, Meningioma, Pituitary, No Tumor
+* **Format:** Grayscale `.jpg` images categorized in folders
+
+---
 
 ## 🧠 Model Architecture
 
-### 🔵 CNN – Tumor Type Classification
+### 🔷 CNN – Brain Tumor Detection
 
-* ✅ Input: Brain MRI image
-* ✅ 3 Convolutional layers (Conv2D + ReLU + MaxPooling)
-* ✅ Flatten + Fully connected layers
-* ❌ No dropout (no overfitting observed)
-* ✅ Output: 4-class softmax
+| Layer Type  | Description                                                 |
+| ----------- | ----------------------------------------------------------- |
+| Input       | Grayscale MRI/CT image                                      |
+| Conv Blocks | 3 × Conv2D + ReLU + MaxPooling                              |
+| FC Layers   | Flatten → Dense → Softmax                                   |
+| Output      | 4 classes (`No Tumor`, `Meningioma`, `Pituitary`, `Glioma`) |
 
-### 🟩 ANN – Glioma Stage Classification
-
-* ✅ Input: Gene mutation test results (numerical features)
-* ✅ 2–3 Dense layers with ReLU activation
-* ✅ Output: Stage prediction (multi-class or regression-based)
+*✅ Trained from scratch in PyTorch*
+*❌ No dropout (no overfitting observed)*
 
 ---
 
-## 💾 Saved Models
+### 🟢 ANN – Glioma Stage Classification
 
-This repository includes **pre-trained models** for direct inference:
-
-| Model | Purpose                     | File Name                         |
-| ----- | --------------------------- | --------------------------------- |
-| CNN   | Brain Tumor Classification  | `models/BTD_model.pth`            |
-| ANN   | Glioma Stage Classification | `models/glioma_stages.pth`        |
-
-📆 Both models were **trained from scratch** using PyTorch.
-
-⚠️ The models are for **inference only**.
-📩 **For training code**, please DM or email the author (contact below).
+| Layer Type | Description                      |
+| ---------- | -------------------------------- |
+| Input      | Gene mutation test results       |
+| Dense      | 2–3 Fully Connected Layers       |
+| Activation | ReLU + Softmax/Regression Output |
+| Output     | Glioma Stage (I–IV)              |
 
 ---
 
-## 🫠 Tech Stack
+## 💾 Model Files
 
-| Category     | Tools / Libraries                           |
-| ------------ | ------------------------------------------- |
-| Language     | Python 3.10+                                |
-| Framework    | PyTorch                                     |
-| Other Libs   | OpenCV, NumPy, Matplotlib, scikit-learn     |
-| Training Env | Jupyter Notebook + NVIDIA GPU               |
-| Storage      | Google Drive (for large `.pth` model files) |
-| Version Ctrl | Git, GitHub                                 |
+| File Name           | Purpose                           | Availability                                                                                                           |
+| ------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `BTD_model.pth`     | Brain Tumor Detection (CNN)       | 🔗 [Download from Google Drive](https://drive.google.com/file/d/19SVLCD3DTa1aBZ9PI4TTgNkvJKgL2LSY/view?usp=drive_link) |
+| `glioma_stages.pth` | Glioma Stage Classification (ANN) | ✅ Included in `models/` directory                                                                                      |
 
----
-
-## 📁 Folder Structure
-
-```bash
-BrainTumorClassification/
-├── main.py                     # Entry point: run this
-├── utils.py                    # Helper functions (preprocessing, loading, etc.)
-├── API.py                      # API Endpoint for frontend using FASt API
-├── images/                     # Image data (if any sample needed)
-├── models/
-│   ├── BTD_model.pth           # (Download from Drive and place the file here)
-│   ├── glioma_stages.pth           # Saved Model for Glioma Stages Detection
-│   ├── BrainTumorClassification.ipynb   # Notebook for CNN testing
-│   └── Glioma_Stages.ipynb               # Notebook for ANN training/testing
-├── README.md
-└── .gitignore
-```
-
----
-
-## 🔗 Model Download (BTD\_model.pth)
-
-Due to GitHub's 100MB limit, the trained CNN model is stored externally.
-
-📅 [Click here to download BTD\_model.pth](https://drive.google.com/file/d/19SVLCD3DTa1aBZ9PI4TTgNkvJKgL2LSY/view?usp=drive_link)
-
-After downloading, place it inside the `models/` folder:
+📍 **Note:**
+Due to GitHub’s 100MB limit, `BTD_model.pth` is stored externally.
+After downloading, **manually place it inside the `models/` folder** like this:
 
 ```bash
 models/BTD_model.pth
@@ -122,15 +89,14 @@ models/BTD_model.pth
 
 ---
 
-## 🔄 Auto-Download Script (Optional)
+## 🔄 Optional: Auto-Download Script
 
-Add this to `main.py` or any script to download the model automatically if it's missing:
+Use this code to download the CNN model automatically if missing:
 
 ```python
-import os
-import urllib.request
+import os, urllib.request
 
-model_url = "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+model_url = "https://drive.google.com/uc?export=download&id=19SVLCD3DTa1aBZ9PI4TTgNkvJKgL2LSY"
 model_path = "models/BTD_model.pth"
 
 if not os.path.exists(model_path):
@@ -142,76 +108,108 @@ if not os.path.exists(model_path):
 
 ---
 
-## ⚙️ How to Run the Project
+## ⚙️ Tech Stack
 
-### 🔧 1. Clone the Repository
+| Category     | Tools / Libraries                       |
+| ------------ | --------------------------------------- |
+| Language     | Python 3.10+                            |
+| DL Framework | PyTorch                                 |
+| Others       | OpenCV, NumPy, scikit-learn, Matplotlib |
+| Training Env | Jupyter Notebook, NVIDIA GPU            |
+| Deployment   | FastAPI + Vercel (Frontend)             |
+| Storage      | Google Drive (for model hosting)        |
+
+---
+
+## 📁 Folder Structure
 
 ```bash
-git clone https://github.com/your-username/BrainTumorClassification.git
-cd BrainTumorClassification
+NeuroAssistAI/
+├── main.py                  # Entry point
+├── API.py                   # FastAPI backend
+├── utils.py                 # Helper functions
+├── models/
+│   ├── BTD_model.pth
+│   └── glioma_stages.pth
+├── images/
+├── README.md
+└── .gitignore
 ```
 
-### 🔧 2. Install Requirements
+---
+
+## 🚀 How to Run Locally
+
+### 1️⃣ Clone the Repo
 
 ```bash
-pip install torch torchvision opencv-python matplotlib scikit-learn
+git clone https://github.com/fewgets/NeuroAssistAI.git
+cd NeuroAssistAI
 ```
 
-Or if you have `requirements.txt`:
+### 2️⃣ Install Dependencies
+
+```bash
+pip install torch torchvision opencv-python matplotlib scikit-learn fastapi uvicorn
+```
+
+Or use:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 🚀 3. Run the App
+### 3️⃣ Run the App
 
 ```bash
 python main.py
 ```
 
-* Upload a grayscale brain scan image
-* Get tumor prediction
-* If **Glioma**, provide further gene test input
-* ANN predicts Glioma stage
-
 ---
 
 ## ✨ Features
 
-* ✅ End-to-end deep learning pipeline
-* ✅ Accurate multi-class tumor classification
-* ✅ Secondary stage detection for Glioma
-* ✅ Lightweight and reproducible
-* ✅ Easily extendable for new tumor types
+✅ Tumor classification using CNN
+
+✅ Glioma stage prediction using ANN
+
+✅ Web interface for real-time inference
+
+✅ Pre-trained models included
+
+✅ End-to-end modular system
+
+✅ Easy to extend and deploy
 
 ---
 
-## 🧠 Future Work
+## 🔭 Future Enhancements
 
-* Add Gemini AI chatbot integration for medical advice
-* Use transfer learning (VGG16, ResNet) for comparison
-* Deploy as a web app or API
+* 🤖 Chatbot integration for medical Q\&A (Gemini/GPT)
+* 🧬 Integration with real-time genetic APIs
+* 📊 Real-time dashboard for doctors
+* 📱 Mobile version using React Native
 
 ---
 
 ## 📩 Contact
 
-👤 **Usama Shaikh**
-📧 Email: [shaikhusama541@gmail.com](mailto:shaikhusama541@gmail.com)
+**👨‍💻 Usama Shahid**
+📧 Email: [dev.usamashahid@gmail.com](mailto:dev.usamashahid@gmail.com)
 🔗 GitHub: [@fewgets](https://github.com/fewgets)
 
-Feel free to reach out for:
-
-* 🔓 Training code
-* 🧪 Data processing pipeline
-* 🤝 Collaboration
-* 💬 Guidance
+> For training notebooks, collab requests, or guidance — feel free to connect.
 
 ---
 
-## 📜 License
+## ⚠️ License
 
-This project is for academic and research purposes only.
-Feel free to fork, reference, and learn - but give credit where due 🙏
+This project is intended for **academic and educational purposes only.**
+Re-use is allowed with proper credit and citation.
+Not intended for clinical deployment without validation.
+
+---
+
+### 🔗 [🌐 Live App](https://neuroassistai.vercel.app/) • [📁 Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) • [📜 Paper](https://onlinelibrary.wiley.com/doi/full/10.1155/2022/1830010)
 
 ---
