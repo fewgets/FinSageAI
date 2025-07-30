@@ -1,165 +1,90 @@
-# 🧠 NeuroAssist-AI
+# 💸 FinSage AI – Smart Personal Finance & Wealth Assistant
 
-> A Deep Learning-based Smart System for Brain Tumor Detection and Glioma Stage Prediction
-> 
-> 🔗 **[Live Demo](https://neuroassistai.vercel.app/)**
+> A voice-enabled finance management app that tracks income, expenses, goals, and generates smart insights — powered by AI.
 
 ---
 
-## 📌 Overview
+## 📌 Project Summary
 
-**NeuroAssist-AI** is a two-stage deep learning pipeline that automates:
+FinSage AI is a personal finance desktop app that integrates:
 
-1. **Brain Tumor Detection** from grayscale MRI/CT images using a custom CNN.
-2. **Glioma Stage Prediction** using numerical gene mutation data via a custom ANN.
+1. **Smart Ledger with Voice Input**
 
-> This system is inspired by real clinical practices and aims to provide intelligent support to radiologists and neurologists.
+   * 🎙️ Add transactions using voice commands
+   * 📋 Tracks income, expenses, categories, and dates with real-time UI updates
 
----
+2. **Automated Reports + Filters**
 
-## 🧪 Live Testing
+   * 🧾 Generate PDF reports with filters (date, city, province, party)
+   * 📊 View summaries of balances and transactions by category or location
 
-You can **test the full system online**:
+3. **AI-Driven Insights (Upcoming)**
 
-🌐 **[🔗 Live Web App – NeuroAssist-AI](https://neuroassistai.vercel.app/)**
-
----
-
-## 📚 Research Basis
-
-📄 Inspired by:
-**“Brain Tumor Classification and Glioma Stage Prediction Using Deep Learning”**
-
-🔗 [Read the original paper](https://onlinelibrary.wiley.com/doi/full/10.1155/2022/1830010)
-
-> Note: Original paper had no public dataset or code - we implemented it from scratch.
+   * 📈 Forecast savings, expenses, and budgets using LSTM models
+   * 🤖 Integrated chatbot for financial planning tips
 
 ---
 
-## 📂 Dataset
+## 🧠 How it Works
 
-Dataset: [Brain Tumor MRI Dataset – Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+### 🎙️ Voice Ledger Entry
 
-* **4 Classes:** Glioma, Meningioma, Pituitary, No Tumor
-* **Format:** Grayscale `.jpg` images categorized in folders
+* Voice commands (via `SpeechRecognition`) converted into text
+* Parses entries like: `"Add expense 1200 groceries"`
+* Stores data in structured format in SQLite or Supabase
 
----
+### 🧾 Report Generation
 
-## 🧠 Model Architecture
+* Select filters (city, date range, party name, province)
+* Auto-generates styled PDF using FPDF / ReportLab
+* Reports include transaction breakdowns and balance charts
 
-### 🔷 CNN – Brain Tumor Detection
+### 📊 Financial Overview & Goals
 
-| Layer Type  | Description                                                 |
-| ----------- | ----------------------------------------------------------- |
-| Input       | Grayscale MRI/CT image                                      |
-| Conv Blocks | 3 × Conv2D + ReLU + MaxPooling                              |
-| FC Layers   | Flatten → Dense → Softmax                                   |
-| Output      | 4 classes (`No Tumor`, `Meningioma`, `Pituitary`, `Glioma`) |
-
-*✅ Trained from scratch in PyTorch*
-*❌ No dropout (no overfitting observed)*
+* Track goals like “Save 10k/month” or “Limit food to 5k”
+* Visual dashboards for category-wise spending
+* Daily, weekly, monthly summaries using matplotlib
 
 ---
 
-### 🟢 ANN – Glioma Stage Classification
+## 🧰 Tech Stack
 
-| Layer Type | Description                      |
-| ---------- | -------------------------------- |
-| Input      | Gene mutation test results       |
-| Dense      | 2–3 Fully Connected Layers       |
-| Activation | ReLU + Softmax/Regression Output |
-| Output     | Glioma Stage (I–IV)              |
+| Category            | Tools / Frameworks        |
+| ------------------- | ------------------------- |
+| Language            | Python 3.10+              |
+| UI Framework        | Flutter             |
+| Voice Input         | SpeechRecognition         |
+| Data Storage        | SQLite / Supabase         |
+| Report Generation   | FPDF, ReportLab           |
+| Visualization       | Matplotlib                |
+| ML Forecasting (\*) | LSTM (Keras / TensorFlow) |
+| NLP Chatbot (\*)    | Gemini AI / OpenAI API    |
+
+\* in future versions (v4–v5)
 
 ---
 
-## 💾 Model Files
+## ⚙️ How to Run the Project
 
-| File Name           | Purpose                           | Availability                                                                                                           |
-| ------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `BTD_model.pth`     | Brain Tumor Detection (CNN)       | 🔗 [Download from Google Drive](https://drive.google.com/file/d/19SVLCD3DTa1aBZ9PI4TTgNkvJKgL2LSY/view?usp=drive_link) |
-| `glioma_stages.pth` | Glioma Stage Classification (ANN) | ✅ Included in `models/` directory                                                                                      |
-
-📍 **Note:**
-Due to GitHub’s 100MB limit, `BTD_model.pth` is stored externally.
-After downloading, **manually place it inside the `models/` folder** like this:
+### 🔧 1. Clone the Repository
 
 ```bash
-models/BTD_model.pth
+git clone https://github.com/your-username/FinSageAI.git
+cd FinSageAI
 ```
 
----
-
-## 🔄 Optional: Auto-Download Script
-
-Use this code to download the CNN model automatically if missing:
-
-```python
-import os, urllib.request
-
-model_url = "https://drive.google.com/uc?export=download&id=19SVLCD3DTa1aBZ9PI4TTgNkvJKgL2LSY"
-model_path = "models/BTD_model.pth"
-
-if not os.path.exists(model_path):
-    os.makedirs("models", exist_ok=True)
-    print("Downloading model...")
-    urllib.request.urlretrieve(model_url, model_path)
-    print("Model downloaded.")
-```
-
----
-
-## ⚙️ Tech Stack
-
-| Category     | Tools / Libraries                       |
-| ------------ | --------------------------------------- |
-| Language     | Python 3.10+                            |
-| DL Framework | PyTorch                                 |
-| Others       | OpenCV, NumPy, scikit-learn, Matplotlib |
-| Training Env | Jupyter Notebook, NVIDIA GPU            |
-| Deployment   | FastAPI + Vercel (Frontend)             |
-| Storage      | Google Drive (for model hosting)        |
-
----
-
-## 📁 Folder Structure
-
-```bash
-NeuroAssistAI/
-├── main.py                  # Entry point
-├── API.py                   # FastAPI backend
-├── utils.py                 # Helper functions
-├── models/
-│   ├── BTD_model.pth
-│   └── glioma_stages.pth
-├── images/
-├── README.md
-└── .gitignore
-```
-
----
-
-## 🚀 How to Run Locally
-
-### 1️⃣ Clone the Repo
-
-```bash
-git clone https://github.com/fewgets/NeuroAssistAI.git
-cd NeuroAssistAI
-```
-
-### 2️⃣ Install Dependencies
-
-```bash
-pip install torch torchvision opencv-python matplotlib scikit-learn fastapi uvicorn
-```
-
-Or use:
+### 🔧 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Run the App
+### 🔧 3. Set Credentials
+
+* Set Supabase config in `database.py`
+* Add Gemini/OpenAI keys for future ML/NLP features
+
+### 🚀 4. Launch App
 
 ```bash
 python main.py
@@ -169,47 +94,39 @@ python main.py
 
 ## ✨ Features
 
-✅ Tumor classification using CNN
-
-✅ Glioma stage prediction using ANN
-
-✅ Web interface for real-time inference
-
-✅ Pre-trained models included
-
-✅ End-to-end modular system
-
-✅ Easy to extend and deploy
+* ✅ Voice-powered income/expense tracking
+* ✅ Custom filters for PDF report generation
+* ✅ User goal setting and budget visualization
+* ✅ Secure login and data persistence
+* 🔜 AI-based forecasting and finance chatbot
 
 ---
 
-## 🔭 Future Enhancements
+## 🔮 Future Plans
 
-* 🤖 Chatbot integration for medical Q\&A (Gemini/GPT)
-* 🧬 Integration with real-time genetic APIs
-* 📊 Real-time dashboard for doctors
-* 📱 Mobile version using React Native
+* 📈 Integrate LSTM-based savings/expense prediction
+* 🗣️ Launch AI chatbot for smart money guidance
+* ☁️ Sync data with cloud for mobile version
+* 📱 Release Android/iOS version
+* 🧠 Add anomaly detection (fraud/overspending alerts)
 
 ---
 
 ## 📩 Contact
 
-**👨‍💻 Usama Shahid**
-📧 Email: [dev.usamashahid@gmail.com](mailto:dev.usamashahid@gmail.com)
-🔗 GitHub: [@fewgets](https://github.com/fewgets)
+👤 **Usama Shahid**
+📧 Email: [shaikhusama541@gmail.com](mailto:shaikhusama541@gmail.com)
 
-> For training notebooks, collab requests, or guidance — feel free to connect.
+Feel free to reach out for:
 
----
-
-## ⚠️ License
-
-This project is intended for **academic and educational purposes only.**
-Re-use is allowed with proper credit and citation.
-Not intended for clinical deployment without validation.
+* 🤝 Collaborations or use cases
+* 💬 Suggestions or improvements
+* 🧪 Customization or integration support
 
 ---
 
-### 🔗 [🌐 Live App](https://neuroassistai.vercel.app/) • [📁 Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) • [📜 Paper](https://onlinelibrary.wiley.com/doi/full/10.1155/2022/1830010)
+## 📜 License
+
+This project is under academic and innovation license — fork, learn, and credit accordingly. Let’s innovate personal finance together 💡
 
 ---
