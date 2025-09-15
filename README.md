@@ -1,6 +1,6 @@
 # 💸 FinSage AI – Smart Personal Finance & Wealth Assistant
 
-> A voice-enabled finance management app that tracks income, expenses, goals, and generates smart insights — powered by AI.
+> A voice-enabled finance management app that tracks income, expenses, goals, and generates smart insights, powered by AI.
 
 ---
 
